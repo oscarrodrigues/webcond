@@ -1,0 +1,64 @@
+<% include ../includes/header%>
+<% include ../includes/nav%>
+<!-- /#page-wrapper -->
+<div class="content-wrapper">
+		<div class="container-fluid">
+			<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="/unidades">Unidades</a>
+				</li>
+				<li class="breadcrumb-item active">Lista de unidades</li>
+			</ol>
+			<!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-home"></i> Unidades
+				</div>
+        <div class="card-body">
+					<div class="row">
+						<div class="col-sm-12 col-md-6">
+							<a class="btn btn-primary" href="/formUnidade">Incluir</a>
+						</div>
+						<div class="col-sm-12 col-md-6">
+							<label>Pesquisar:	<input class="form-control form-control-sm" type="search" name="pesquisaUnidade"></label>
+						</div>
+					</div>
+          <div class="table-responsive">
+						<table class="table table-sm table-bordered table-striped">
+							<thead class="thead-dark">
+								<tr>
+									<th>ID</th>
+									<th>Unidade</th>
+									<th>Usuário</th>
+									<th>Proprietário</th>
+									<th>Email</th>
+									<th>Telefone</th>
+									<th>Ação</th>
+								</tr>
+							</thead>
+							<% for(var i=0; i < unidades.length; i++) {%>
+								<tr>
+									<td><%= unidades[i].id_unidade %></td>
+									<td><%= unidades[i].unidade %></td>
+									<td><%= unidades[i].usuario %></td>
+									<td><%= unidades[i].proprietario %></td>
+									<td><%= unidades[i].email %></td>
+									<td><%= unidades[i].telefone %></td>
+									<td>
+										<a class="btn btn-secondary btn-sm" href="/"><i class="fa fa-pencil"></i></a>
+										<a class="btn btn-danger btn-sm" href="/"><i class="fa fa fa-trash-o"></i></a>
+									</td>
+								</tr>
+								<% } %>
+							</table>
+					</div>
+				</div>
+				<div class="card-footer small text-muted">Atualizado às 11:59 hs</div>
+			</div>
+		</div>
+		<!-- /.container-fluid-->
+	</div>
+	<!-- /.content-wrapper-->
+
+<% include ../includes/footer%>

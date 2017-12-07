@@ -1,0 +1,62 @@
+<% include ../includes/header%>
+<% include ../includes/nav%>
+  <!-- /#page-wrapper -->
+	<div class="content-wrapper">
+	    <div class="container-fluid">
+	      <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+  				<li class="breadcrumb-item">
+  					<a href="/unidades">Unidades</a>
+  				</li>
+  				<li class="breadcrumb-item active">Cadastrar unidade</li>
+  			</ol>
+        <!-- Example DataTables Card-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-home"></i> Cadastrar Unidade
+  				</div>
+          <div class="card-body">
+            <!-- Formulario -->
+            <div>
+              <form action="/unidades/salvarUnidade" method="post">
+                <div class="form-row">
+                  <div class="form-group col-md-1">
+                    <label for="inputUnidade">Unidade: </label>
+                    <input type="text" class="form-control" name="unidade" placeholder="Unidade">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputUsuario">Usuário: </label>
+                    <select id="inputUsuario" name="usuario" class="form-control">
+                      <option value="" selected>Nome do usuário...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="inputPropietario">Proprietário: </label>
+                    <input type="text" class="form-control" id="inputProprietario" name="proprietario" placeholder="Nome do proprietario">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputEmail">Email: </label>
+                    <input type="text" class="form-control" id="inputEmail" name="email" placeholder="e-mail">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputEmail">Telefone: </label>
+                    <input type="text" class="form-control" id="inputTelefone" name="telefone" placeholder="telefone">
+                  </div>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Salvar">
+                <button class="btn btn-secondary" onclick="window.location.href='/unidades">Cancelar</a>
+              </form>
+            </div>
+
+          </div>
+  				<div class="card-footer small text-muted">Atualizado às 11:59 hs</div>
+  			</div>
+  		</div>
+  		<!-- /.container-fluid-->
+  	</div>
+  	<!-- /.content-wrapper-->
+
+<% include ../includes/footer%>

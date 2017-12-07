@@ -1,0 +1,47 @@
+<% include ../includes/header%>
+<% include ../includes/nav%>
+<!-- /#page-wrapper -->
+<div class="content-wrapper">
+		<div class="container-fluid">
+			<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="/pagamentos">Ciclo de Pagamentos</a>
+				</li>
+				<li class="breadcrumb-item active">Lista</li>
+			</ol>
+			<!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-usd"></i> Ciclo de Pagamentos
+				</div>
+        <div class="card-body">
+					<div class="row">
+						<div class="col-sm-12 col-md-6">
+							<a class="btn btn-primary" href="/formPagamento">Incluir</a>
+						</div>
+						<div class="col-sm-12 col-md-6">
+							<label>Pesquisar:	<input class="form-control form-control-sm" type="search" name="pesquisaPagamento"></label>
+						</div>
+					</div>
+          <div class="table-responsive">
+						<table class="table table-sm table-bordered table-striped">
+							<thead class="thead-dark">
+								<tr>
+									<th>Nome</th>
+									<th>Mês</th>
+									<th>Ano</th>
+									<th>Ação</th>
+								</tr>
+							</thead>
+							</table>
+					</div>
+				</div>
+				<div class="card-footer small text-muted">Atualizado às 11:59 hs</div>
+			</div>
+		</div>
+		<!-- /.container-fluid-->
+	</div>
+	<!-- /.content-wrapper-->
+
+<% include ../includes/footer%>
