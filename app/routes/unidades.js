@@ -1,31 +1,30 @@
 module.exports = function(app) {
 
   app.get('/unidades', function(req, res){
-    // Carrega a funcao de conexao com bd exportada via autoload.
-    var connection = app.config.dbConnection()
-    // Carrega o model de noticias.
-    var unidadesModel = new app.app.models.UnidadesDAO(connection)
+    app.app.controllers.unidades.unidades(app, req, res)
+  })
 
-    unidadesModel.getUnidades(function(error, result){
-        res.render('unidades/unidades', {unidades : result})
-      })
-    })
+  app.get('/formUnidade', function(req, res){
+    app.app.controllers.unidades.formUnidade(app, req, res)
+  })
 
+  app.post('/unidades/salvarUnidade', function(req, res){
+    app.app.controllers.unidades.salvarUnidade(app, req, res)
+  })
 
-    app.get('/formUnidade', function(req, res){
-      res.render('unidades/formUnidade')
-    })
+  app.post('/unidades/pesquisarUnidade', function(req, res) {
+    app.app.controllers.unidades.pesquisarUnidade(app, req, res)
+  })
 
+  app.get('/unidades/editarUnidade', function(req, res) {
+    app.app.controllers.unidades.editarUnidade(app, req, res)
+  })
 
-    app.post('/unidades/salvarUnidade', function(req, res){
-      var unidade = req.body
-      // Carrega a funcao de conexao com bd exportada via autoload.
-      var connection = app.config.dbConnection()
-      // Carrega o model de noticias.
-      var unidadesModel = new app.app.models.UnidadesDAO(connection)
+  app.post('/unidades/atualizarUnidade', function(req, res){
+    app.app.controllers.unidades.atualizarUnidade(app, req, res)
+  })
 
-      unidadesModel.salvarUnidade(unidade, function(error, result){
-        res.redirect('/unidades')
-      })
-    })
+  app.get('/unidades/excluirUnidade', function(req, res){
+    app.app.controllers.unidades.excluirUnidade(app, req, res)
+  })
 }

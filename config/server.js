@@ -17,7 +17,7 @@ app.set('views', './app/views')
 
 
 // Especifia o diretorio com conteudo estatico.
-app.use(express.static('public/sbadmin'));
+app.use(express.static('./app/public/sbadmin'));
 // Cria um middleware para que o bodyParser recupere os dados via post no formato json.
 app.use(bodyParser.urlencoded({extended : true}))
 // Configura o middleware express-validator.
@@ -29,6 +29,7 @@ consign()
   .include('app/routes')
   .then('config/dbConnection.js')
   .then('app/models')
+  .then('app/controllers')
   .into(app)
 
 // Exporta o objeto app.
