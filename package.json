@@ -16,6 +16,6 @@
     "express-validator": "^4.3.0",
     "mysql": "^2.15.0",
     "nodejs": "0.0.0",
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.14.7"
   }
 }

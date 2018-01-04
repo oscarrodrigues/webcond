@@ -18,22 +18,41 @@
         <div class="card-body">
 					<div class="row">
 						<div class="col-sm-12 col-md-6">
-							<a class="btn btn-primary" href="/formPagamento">Incluir</a>
+							<a class="btn btn-primary" href="/pagamentos/adicionarCicloPagamentos">Incluir</a>
 						</div>
 						<div class="col-sm-12 col-md-6">
-							<label>Pesquisar:	<input class="form-control form-control-sm" type="search" name="pesquisaPagamento"></label>
+							<form class="form-inline my-2 my-lg-0 mr-lg-2" action="/pagamentos/pesquisarCicloPagamentos" method="post">
+		            <div class="input-group">
+		              <input class="form-control" id="pesquisa" name="pesquisa" type="text" placeholder="Pesquisar...">
+		              <span class="input-group-btn">
+										<input type="submit" class="btn btn-primary" value="Pesquisar"
+		                  <i class="fa fa-search"></i>
+		              </span>
+		            </div>
+		          </form>
 						</div>
 					</div>
+					<br>
           <div class="table-responsive">
 						<table class="table table-sm table-bordered table-striped">
 							<thead class="thead-dark">
 								<tr>
-									<th>Nome</th>
 									<th>Mês</th>
 									<th>Ano</th>
 									<th>Ação</th>
 								</tr>
 							</thead>
+							<% for(var i=0; i < ciclopagamentos.length ; i++) {%>
+								<tr>
+									<!--<td><%= unidades[i].id_unidade %></td>-->
+									<td><%= ciclopagamentos[i].mes %></td>
+									<td><%= cicloPAGpagamentos[i].ano %></td>
+									<td>
+										<a class="btn btn-secondary btn-sm" href="/pagamentos/editarCicloPagamentos?id_ciclopagamentos=<%= pagamentos[i].id_ciclopagamentos %>"><i class="fa fa-pencil"></i></a>
+										<a class="btn btn-danger btn-sm" href="/pagamentos/excluirCicloPagamentos?id_ciclopagamentos=<%= pagamentos[i].id_ciclopagamentos %>" onclick="return confirm('Deseja realmente excluir?');"><i class="fa fa fa-trash-o"></i></a>
+									</td>
+								</tr>
+								<% } %>
 							</table>
 					</div>
 				</div>

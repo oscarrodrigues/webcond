@@ -10,8 +10,8 @@ module.exports.unidades = function(app, req, res){
 }
 
 
-module.exports.formUnidade = function(app, req, res){
-  res.render('unidades/formUnidade', {validacao : {}, unidade : {}})
+module.exports.adicionarUnidade = function(app, req, res){
+  res.render('unidades/addUnidade', {validacao : {}, unidade : {}})
 }
 
 
@@ -27,7 +27,7 @@ module.exports.salvarUnidade = function(app, req, res){
   // Se houver erros envia os dados da variavel "errors" para variavel "validacao" que eh passada para view form_add_noticia.
   var erros = req.validationErrors()
   if(erros){
-    res.render("unidades/formUnidade", {validacao : erros, unidade : unidade})
+    res.render("unidades/addUnidade", {validacao : erros, unidade : unidade})
     return
   }
 
@@ -65,13 +65,27 @@ module.exports.editarUnidade = function(app, req, res) {
   var unidadesModel = new app.app.models.UnidadesDAO(connection)
 
   unidadesModel.getUnidade(unidade, function(error, result){
-    res.render('unidades/formUnidade', {validacao : {}, unidade : result})
+    res.render('unidades/editUnidade', {validacao : {}, unidade : result[0]})
   })
 }
 
 
 module.exports.atualizarUnidade = function(app, req, res) {
   var unidade = req.body
+
+  // Validacao dos campos enviados para request via post do formulario.
+  req.assert('unidade', 'A identificação da unidade é obrigatório').notEmpty()
+  req.assert('proprietario', 'O nome do proprietário é obrigatório.').notEmpty()
+  req.assert('email', 'O email deve conter um formato válido.').isEmail()
+  req.assert('telefone', 'O telefone é obrigatório e deve conter apenas números.').isInt()
+
+  // Se houver erros envia os dados da variavel "errors" para variavel "validacao" que eh passada para view form_add_noticia.
+  var erros = req.validationErrors()
+  if(erros){
+    //res.render("unidades/formUnidade", {validacao : erros, unidade : unidade})
+    res.render("unidades/editUnidade", {unidade : unidade, validacao : erros})
+    return
+  }
 
   // Carrega a funcao de conexao com bd exportada via autoload.
   var connection = app.config.dbConnection()
@@ -82,6 +96,7 @@ module.exports.atualizarUnidade = function(app, req, res) {
     res.redirect('/unidades')
   })
 }
+
 
 module.exports.excluirUnidade = function(app, req, res){
   var unidade = req.query

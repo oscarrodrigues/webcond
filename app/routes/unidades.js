@@ -4,8 +4,8 @@ module.exports = function(app) {
     app.app.controllers.unidades.unidades(app, req, res)
   })
 
-  app.get('/formUnidade', function(req, res){
-    app.app.controllers.unidades.formUnidade(app, req, res)
+  app.get('/adicionarUnidade', function(req, res){
+    app.app.controllers.unidades.adicionarUnidade(app, req, res)
   })
 
   app.post('/unidades/salvarUnidade', function(req, res){

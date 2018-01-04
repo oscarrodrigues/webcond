@@ -18,14 +18,14 @@
         <div class="card-body">
 					<div class="row">
 						<div class="col-sm-12 col-md-6">
-							<a class="btn btn-primary" href="/formUnidade">Incluir</a>
+							<a class="btn btn-primary" href="/adicionarUnidade">Incluir</a>
 						</div>
 						<div class="col-sm-12 col-md-6">
 							<form class="form-inline my-2 my-lg-0 mr-lg-2" action="/unidades/pesquisarUnidade" method="post">
 		            <div class="input-group">
 		              <input class="form-control" id="pesquisa" name="pesquisa" type="text" placeholder="Pesquisar...">
 		              <span class="input-group-btn">
-										<input type="submit" class="btn btn-primary" value="Salvar"
+										<input type="submit" class="btn btn-primary" value="Pesquisar"
 		                  <i class="fa fa-search"></i>
 		              </span>
 		            </div>
@@ -37,7 +37,7 @@
 						<table class="table table-sm table-bordered table-striped">
 							<thead class="thead-dark">
 								<tr>
-									<th>ID</th>
+									<!--<<th>ID</th>-->
 									<th>Unidade</th>
 									<th>Usuário</th>
 									<th>Proprietário</th>
@@ -48,7 +48,7 @@
 							</thead>
 							<% for(var i=0; i < unidades.length ; i++) {%>
 								<tr>
-									<td><%= unidades[i].id_unidade %></td>
+									<!--<td><%= unidades[i].id_unidade %></td>-->
 									<td><%= unidades[i].unidade %></td>
 									<td><%= unidades[i].usuario %></td>
 									<td><%= unidades[i].proprietario %></td>
@@ -56,7 +56,7 @@
 									<td><%= unidades[i].telefone %></td>
 									<td>
 										<a class="btn btn-secondary btn-sm" href="/unidades/editarUnidade?id_unidade=<%= unidades[i].id_unidade %>"><i class="fa fa-pencil"></i></a>
-										<a class="btn btn-danger btn-sm" href="/unidades/excluirUnidade?id_unidade=<%= unidades[i].id_unidade %>"><i class="fa fa fa-trash-o"></i></a>
+										<a class="btn btn-danger btn-sm" href="/unidades/excluirUnidade?id_unidade=<%= unidades[i].id_unidade %>" onclick="return confirm('Deseja realmente excluir?');"><i class="fa fa fa-trash-o"></i></a>
 									</td>
 								</tr>
 								<% } %>

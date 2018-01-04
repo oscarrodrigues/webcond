@@ -1,0 +1,77 @@
+<% include ../includes/header%>
+<% include ../includes/nav%>
+  <!-- /#page-wrapper -->
+	<div class="content-wrapper">
+	    <div class="container-fluid">
+	      <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+  				<li class="breadcrumb-item">
+  					<a href="/pagamentos">Pagamentos</a>
+  				</li>
+  				<li class="breadcrumb-item active">Cadastrar Ciclo de Pagamentos</li>
+  			</ol>
+        <!-- Example DataTables Card-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-usd"></i> Cadastrar Ciclo de Pagamentos
+  				</div>
+          <div class="card-body">
+            <!-- Formulario -->
+						<% if(validacao.length > 0) { %>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="alert alert-danger">
+										<strong>Atenção!</strong>
+										<ul>
+											<% for(var i = 0; i < validacao.length; i++) { %>
+											<li><%= validacao[i].msg %></li>
+											<% } %>
+										</ul>
+									</div>
+								</div>
+							</div>
+						<% } %>
+
+							<form action="/pagamentos/salvarCicloPagamentos" method="post">
+                <div class="form-row">
+                  <div class="form-group col-md-1">
+                    <label for="inputUnidade">Unidade: </label>
+                    <input type="text" class="form-control" name="unidade" placeholder="Unidade" value="<%= unidade.unidade %>">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputUsuario">Usuário: </label>
+                    <select id="usuario" name="usuario" class="form-control">
+                      <option value="" selected>Nome do usuário...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="inputPropietario">Proprietário: </label>
+                    <input type="text" class="form-control" id="proprietario" name="proprietario" placeholder="Nome do proprietario" value="<%= unidade.proprietario %>">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputEmail">Email: </label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="e-mail" value="<%= unidade.email %>">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputEmail">Telefone: </label>
+                    <input type="text" class="form-control" id="telefone" name="telefone" placeholder="telefone" value="<%= unidade.telefone %>">
+                  </div>
+                </div>
+									<input type="submit" class="btn btn-primary" value="Salvar" onclick="return confirm('Os dados estão corretos?');">
+									<!--<a class="btn btn-primary" data-toggle="modal" data-target="#confirmaModal">Salvar</a>-->
+                	<a class="btn btn-secondary" role="button" href="/unidades">Cancelar</a>
+              </form>
+            </div>
+
+          </div>
+  				<div class="card-footer small text-muted">Atualizado às <%= new Date().toISOString() %></div>
+  			</div>
+  		</div>
+  		<!-- /.container-fluid-->
+  	</div>
+  	<!-- /.content-wrapper-->
+
+<% include ../includes/footer%>
